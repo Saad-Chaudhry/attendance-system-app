@@ -1,17 +1,21 @@
 import streamlit as st
-from ..Home import face_rec
+from Home import face_rec
 from streamlit_webrtc import webrtc_streamer
 import av
 import time
 
-# st.set_page_config(page_title='Predictions')
+st.set_page_config(page_title='Predictions')
+
 st.subheader('Real-Time Attendance System')
 
 # Retrieve the data from redis database
 with st.spinner('Retrieving Data From Redis DB ....'):
-    redis_face_db = face_rec.retrive_data(name='academy:register')
-    st.dataframe(redis_face_db)
-    st.success("Data successfully retrieved from Redis")
+    if face_rec.r.exists('academy:register') == 0:
+        st.error('No data found in the Redis Database')
+    else:
+        redis_face_db = face_rec.retrieve_data(name='academy:register')
+        st.dataframe(redis_face_db)
+        st.success("Data successfully retrieved from Redis")
 
 # time
 waitTime = 30  # time in sec

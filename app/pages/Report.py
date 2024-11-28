@@ -1,7 +1,8 @@
 import streamlit as st
-from ..Home import face_rec
+from Home import face_rec
 
-st.set_page_config(page_title='Reporting', layout='wide')
+st.set_page_config(page_title='Reporting')
+
 st.subheader('Reporting')
 
 # Retrieve logs data and show in Report.py
@@ -20,9 +21,12 @@ tab1, tab2 = st.tabs(['Registered Data', 'Logs'])
 with tab1:
     if st.button('Refresh Data'):
         # Retrieve the data from Redis Database
-        with st.spinner('Retriving Data from Redis DB ...'):
-            redis_face_db = face_rec.retrive_data(name='academy:register')
-            st.dataframe(redis_face_db[['Name', 'Role']])
+        with st.spinner('Retrieving Data from Redis DB ...'):
+            if face_rec.r.exists('academy:register') == 0:
+                st.error('No data found in the Redis Database')
+            else:
+                redis_face_db = face_rec.retrieve_data(name='academy:register')
+                st.dataframe(redis_face_db[['Name', 'Role']])
 
 with tab2:
     if st.button('Refresh Logs'):
