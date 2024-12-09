@@ -5,8 +5,6 @@ import numpy as np
 from streamlit_webrtc import webrtc_streamer
 import av
 
-st.set_page_config(page_title='Registration Form')
-
 st.subheader('Registration Form')
 
 ## init registration form

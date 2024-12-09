@@ -4,8 +4,6 @@ from streamlit_webrtc import webrtc_streamer
 import av
 import time
 
-st.set_page_config(page_title='Predictions')
-
 st.subheader('Real-Time Attendance System')
 
 # Retrieve the data from redis database

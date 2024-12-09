@@ -1,8 +1,6 @@
 import streamlit as st
 from Home import face_rec
 
-st.set_page_config(page_title='Reporting')
-
 st.subheader('Reporting')
 
 # Retrieve logs data and show in Report.py
