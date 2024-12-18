@@ -4,8 +4,11 @@ import cv2
 
 import redis
 
+# insight face
 from insightface.app import FaceAnalysis
 from sklearn.metrics import pairwise
+# time
+import time
 from datetime import datetime
 
 import os
