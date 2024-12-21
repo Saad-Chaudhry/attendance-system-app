@@ -3,7 +3,7 @@ pandas
 redis
 opencv-python-headless
 scikit-learn
-streamlit
+streamlit==1.28.2
 streamlit-webrtc
 insightface
 onnxruntime
