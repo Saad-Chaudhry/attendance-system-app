@@ -5,20 +5,13 @@ import av
 import time
 
 st.subheader('Real-Time Attendance System')
-
-# Retrieve the data from redis database
-with st.spinner('Retrieving Data From Redis DB ....'):
-    if face_rec.r.exists('academy:register') == 0:
-        st.error('No data found in the Redis Database')
-    else:
-        redis_face_db = face_rec.retrieve_data(name='academy:register')
-        st.dataframe(redis_face_db)
-        st.success("Data successfully retrieved from Redis")
+st.write('This page is used to take attendance in real-time using the webcam')
 
 # time
 waitTime = 5  # time in sec
 setTime = time.time()
 realtimepred = face_rec.RealTimePred()  # real time prediction class
+redis_face_db = face_rec.retrieve_data(name='academy:register')
 
 
 # Real Time Prediction
