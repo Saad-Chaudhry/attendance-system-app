@@ -1,16 +1,13 @@
 import streamlit as st
-import webbrowser
 
 st.set_page_config(page_title='Attendance System', layout='wide')
 
 st.header('Attendance System using Face Recognition')
 
-if st.button("Go to Web Dashboard"):
-    js = "window.open('https://oasufr-082fd6eb773f.herokuapp.com/')"
-    st.markdown(f'<script>{js}</script>', unsafe_allow_html=True)
-
 with st.spinner("Loading Models and Connecting to Redis db ..."):
     import face_rec
+
+st.write("[Click here to go to Web Dashboard](https://oasufr-082fd6eb773f.herokuapp.com/)")
 
 # Retrieve the data from redis database
 with st.spinner('Retrieving Data From Redis DB ....'):
