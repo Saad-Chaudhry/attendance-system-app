@@ -9,7 +9,7 @@ from insightface.app import FaceAnalysis
 from sklearn.metrics import pairwise
 # time
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import os
 
@@ -110,7 +110,7 @@ class RealTimePred:
     def face_prediction(self, test_image, dataframe, feature_column,
                         name_role=['Name', 'Role'], thresh=0.5):
         # step-1: find the time
-        current_time = str(datetime.now())
+        current_time = str(datetime.now() + timedelta(hours=5))
 
         # step-1: take the test image and apply to insight face
         results = face_app.get(test_image)
